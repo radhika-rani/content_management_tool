@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utils.css">
+    <link rel="stylesheet" href="mobile.css">
+ 
+    
+
+   
+
+    <title>MyBlog</title>
+</head>
+
+
+
+<body>
+    <nav class="navigation max-width-1 m-auto">
+        <div class="nav-left">
+            <a href="index.html">
+           <img src="logoblog.jpg">
+            </a>
+            <ul>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li> <a href="#">About</a></li>
+                <li> <a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <form action="search.html" method="get">
+            <input class="form-input" type="text" name="query" placeholder="Article Search">
+            <button class="btn">
+                Search
+            </button>
+            </form>
+        </div>
+
+    </nav>
+    <div class="max-width-1 m-auto">
+        <hr>
+    </div>
+    <div class="m-auto content max-width-1 my-2">
+       
+ 
+        <div class="content-left" >
+            <h1>
+                Welcome to MyBlog.com !
+            </h1>
+            <br>
+            <a href="post.html" class="btn">Create a New Blog</a>
+            <br>
+            <p>Welcome to our blogging website, where thoughts and creativity find their virtual heaven! Discover a
+                diverse collection of captivating articles, written by talented individuals from all walks of life.</p>
+                <p> You're passionate about technology, art, travel, health, or anything in between, we've got you
+                covered. Our platform is a melting pot of ideas, encouraging open discussions and fostering a community
+                of like-minded individuals. Join us on this enriching journey of knowledge, inspiration, and
+                self-expression. Unleash your inner storyteller, share your experiences, and let your words leave an
+                indelible mark on the world. Embrace the power of blogging with us and become part of a digital tapestry
+                that celebrates the beauty of words and the art of sharing. So, dive into the virtual realm of boundless
+                creativity and let your ideas take flight. Happy blogging!</p>
+        </div>
+        
+    <div class="content-right">
+      
+    </div>
+    </div>
+
+    <div class="max-width-1 m-auto"><hr></div>   
+    <div class="home-articles max-width-1 m-auto fotn2">
+        <h2>Featured Articles</h2>
+        <div id="featuredArticles"></div>
+          <div class="year-box adjust-year">
+
+            <div>
+                <h3>Year </h3>
+            </div>
+            <div>
+                <input type="radio" name="year" id=""> 2023
+            </div>
+            <div>
+                <input type="radio" name="year" id=""> 2022
+            </div>
+        </div>
+        <div class="home-article">
+            <div class="home-article-img">
+                <img src="article1.jpg" alt="article">
+            </div>
+
+<!--first articel imagw-->
+<!--first articel of vr-->
+<div class="home-article-content font1">
+    <a href="blogpost.html">
+    <h3>Exploring a New Reality: The Fascinating World of Virtual Reality</h3>
+    </a>
+    <div>Radhika Rani</div>
+   
+    <span>3s ago | 6 min read </span>
+</div>
+
+</div>
+
+<div class="home-article">
+    <div class="home-article-img">
+        <img src="article2.jpg" alt="article2">
+    </div>
+      
+
+
+            <div class="home-article-content font1">
+                <a href="blogpost.html">
+                <h3>"Harvesting Nature's Bounty: The Organic Farming Chronicles"</h3>
+                </a>
+                <span>Author Name</span>
+                <br>
+                <span>07 January 2023 | 6 min read</span>
+            </div>
+        </div>
+           <div class="home-article">
+            <div class="home-article-img">
+                <img src="article3.jpg" alt="article2">
+            </div>
+
+
+            <div class="home-article-content font1">
+                <a href="blogpost.html">
+                <h3>"Fashion Forward: Exploring the Future of Style and Sustainability"</h3>
+                </a>
+                <span>Author Name</span>
+                <br>
+                <span>08 April 2023 | 4 min read</span>
+            </div>
+        </div>
+           <div class="home-article">
+            <div class="home-article-img">
+                <img src="article4.jpg" alt="article2">
+            </div>
+
+
+            <div class="home-article-content font1">
+                <a href="blogpost.html">
+                <h3>"Social Media Overload: Striking the Balance for a Digital Lifestyle"</h3>
+                </a>
+                <span>Author Name</span>
+                <br>
+                <span>21 July 2023 | 6 min read</span>
+            </div>
+        </div>
+        <div class="footer">
+            <p>
+                Copyright &copy; MyBlog.com
+            </p>
+            
+        </div>
+        <script>
+            // Fetch and display featured articles
+            window.addEventListener('load', function () {
+              fetch('app.py') // Replace with the server-side script URL to fetch blog data
+                .then(response => response.json())
+                .then(data => displayFeaturedArticles(data))
+                .catch(error => console.error('Error fetching featured articles:', error));
+            });
+        
+            function displayFeaturedArticles(articles) {
+              const featuredArticlesContainer = document.getElementById('featuredArticles');
+        
+              // Loop through the fetched blog data and create the featured article sections dynamically
+              articles.forEach(article => {
+                const articleElement = document.createElement('div');
+                articleElement.className = 'home-article';
+        
+                const articleImage = document.createElement('div');
+                articleImage.className = 'home-article-img';
+                articleImage.innerHTML = `<img src="${article.image}" alt="article">`;
+                articleElement.appendChild(articleImage);
+        
+                const articleContent = document.createElement('div');
+                articleContent.className = 'home-article-content font1';
+                articleContent.innerHTML = `
+                  <a href="${article.link}">
+                    <h3>${article.title}</h3>
+                  </a>
+                  <span>${article.author}</span>
+                  <br>
+                  <span>${article.date} | ${article.readingTime}</span>
+                `;
+                articleElement.appendChild(articleContent);
+        
+                featuredArticlesContainer.appendChild(articleElement);
+              });
+            }
+          </script>
+
+
+</body>
+
+
+
+</html>

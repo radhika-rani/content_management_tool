@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create a New Blog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #73000a;
+      color: #fff;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+    input[type="submit"] {
+      background-color: #73000a;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #73000a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Create a New Blog</h1>
+  <form id="blogForm" action="/submit_blog" method="POST">
+    <label for="blog_title">Blog Title:</label>
+    <input type="text" id="blog_title" name="blog_title" required>
+    
+    <label for="author_name">Author Name:</label>
+    <input type="text" id="author_name" name="author_name" required>
+
+    <label for="blog_category">Category:</label>
+    <select id="blog_category" name="blog_category" required>
+      <option value="technology">Technology</option>
+      <option value="travel">Travel</option>
+      <option value="food">Food</option>
+      <label for="blog_image">Choose Image:</label>
+      <input type="file" id="blog_image" name="blog_image" accept="image/*" required>
+      <!-- Add more categories as needed -->
+    </select>
+
+    <label for="blog_content">Blog Content:</label>
+    <textarea id="blog_content" name="blog_content" rows="10" required></textarea>
+    <a href="blogpost.html">
+    <input type="submit" value="Create Blog">
+ </a>
+  </form>
+  <!-- ... Your existing HTML code ... -->
+
+ 
+  <script>
+    // Function to redirect to the homepage
+    function redirectToHomepage() {
+      window.location.href = "blogpost.html"; // Replace with your homepage URL
+    }
+
+    // Add an event listener to the form submission
+    document.getElementById("blogForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the default form submission
+      redirectToHomepage();   // Redirect to the homepage
+    });
+  </script>
+  
+</body>
+</html>
